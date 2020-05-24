@@ -1,0 +1,50 @@
+<!-- 头部 -->
+
+<view class="header">
+  <text>客服机器人</text>
+</view>
+
+<!-- 导航栏 -->
+
+<view class="nav-box">
+  <view
+    class="nav-item {{active==0?'active':''}}"
+    bindtap="changeNav"
+    data-id="0">
+    <text>消息模板</text>
+  </view>
+  <view
+    class="nav-item {{active==1?'active':''}}"
+    bindtap="changeNav"
+    data-id="1">
+    <text>高级玩法</text>
+  </view>
+  <view
+    class="nav-item {{active==2?'active':''}}"
+    bindtap="changeNav"
+    data-id="2">
+    <text>人工客服</text>
+  </view>
+</view>
+
+<!-- 列表 -->
+<view class="body">
+  <button
+    open-type="contact"
+    show-message-card="true"
+    send-message-title="{{item.name}}"
+    send-message-img="{{item.logo||default_logo}}"
+    send-message-path="/pages/index/index?demo_id={{item.keyword}}"
+    wx:for="{{datas[active]}}"
+    wx:key="id"
+    class="body-item">
+    <view class="left">
+      <image src="{{ item.logo || default_logo }}"></image>
+    </view>
+    <view class="center">
+      <text class="name">{{ item.name }}</text>
+      <text class="desc">{{ item.desc }}</text>
+      <text class="tips">客服会话里回复 <text class="keyword">{{ item.keyword }}</text> 体验</text>
+    </view>
+  </button>
+</view>
